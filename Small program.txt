@@ -27,6 +27,7 @@ global loop
 	crb
 	5
 
+	;checking if it has written it 4 times yet
 	jne
 	16
 
