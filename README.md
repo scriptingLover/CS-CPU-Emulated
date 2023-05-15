@@ -1,7 +1,7 @@
 # CS-CPU-emulated
 
 A small 16 bit CPU written in C#, you can change the clock speed via the public int clock number.
-You can use the global keyword for a non callable function.
+You can use the global keyword for a callable function.
 Comments must be on a seperate line from the code.
 
 OPcode:
