@@ -46,7 +46,7 @@ Formatting:
     
     *The rest are all single instruction*
 ```
-calling:
+Calling:
 ```
     print:
     <string>
