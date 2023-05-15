@@ -41,7 +41,7 @@ Formatting:
     Address
 
     JMP:
-    Address / Function
+    Address
 
     JNE & JIE:
     Address / Function
