@@ -64,4 +64,7 @@ Calling:
 
     scanf:
     Address
+    
+    func:
+    Name
 ```
