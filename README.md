@@ -3,6 +3,7 @@
 A small CPU made written in C#
 
 OPcode:
+```
 (N = null, A = A register, B = B register, T = All)
     (N) 0000 - NOP        No operations
     (A) 0001 - MMV        Memory move
@@ -20,8 +21,10 @@ OPcode:
     (T) 1101 - JIE        Jump if equal
     (N) 1110 - HLT        Halt
     (T) 1111 - CRB        Set value in B
+```
 
 Formatting:
+```
     MMV:
     Address
     Address
@@ -40,8 +43,9 @@ Formatting:
 
     JNE & JIE:
     Address
-
+```
 calling:
+```
     print:
     <string>
   
@@ -56,3 +60,4 @@ calling:
 
     scanf:
     Address
+```
