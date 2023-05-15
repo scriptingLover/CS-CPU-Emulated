@@ -36,7 +36,7 @@ namespace CPU {
                 if (x[i] != "")
                     res = x[i].Substring(0, 1);
                 else
-                    res = ""; 
+                    res = "";
 
                 if (res == ";" || x[i].Contains("global")) {
                     trigger = false;
@@ -152,24 +152,7 @@ namespace CPU {
                     if (show == true)
                         Console.WriteLine("JMP");
 
-                    try {
-                        i = Convert.ToUInt16(x[i + 1]);
-                    }
-                    catch {
-                        string temp3 = x[i + 1];
-                        int temp2 = 0;
-
-                        for (int t = 0; t < x.Length; t++) {
-                            if (x[t].Contains(temp3)) {
-                                temp2++;
-
-                                if (temp2 == 2) {
-                                    i = t;
-                                    break;
-                                }
-                            }
-                        }
-                    }
+                    i = Convert.ToUInt16(x[i + 1]);
                     check = 1;
                 }
 
