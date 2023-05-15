@@ -41,10 +41,10 @@ Formatting:
     Address
 
     JMP:
-    Address
+    Address / Function
 
     JNE & JIE:
-    Address
+    Address / Function
     
     *The rest are all single instruction*
 ```
