@@ -13,7 +13,7 @@ global main
 	call println
 	Exit code status 0
 
-	jmp
+	call func
 	exit
 
 global loop
