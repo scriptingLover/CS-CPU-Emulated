@@ -1,0 +1,31 @@
+CRB
+10
+
+MOV
+B
+
+CRB
+30
+
+ADD
+
+WTB
+0
+
+LDA
+0
+
+MMV
+0
+10
+
+WTA
+1
+
+WTB
+10
+
+call println
+Program ran successful
+
+HLT
