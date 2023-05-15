@@ -1,10 +1,6 @@
-﻿using System;
+using System;
 using System.IO;
-using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Text;
-using System.Xml;
-
 
 namespace CPU {
     public class CPU {
@@ -30,22 +26,36 @@ namespace CPU {
 
             string[] x = File.ReadAllLines("input.txt");
 
+            for (int i = 0; i < x.Length; i++)
+                x[i] = x[i].Replace("\t", "");
+
             for (int i = 0; i < x.Length;) {
                 int check = 0;
                 bool trigger = true;
+
+                string res;
+                if (x[i] != "")
+                    res = x[i].Substring(0, 1);
+                else
+                    res = "";
+
+                if (res == ";" || res == "g") {
+                    trigger = false;
+                    check = 1;
+                }
 
                 if (x[i] == "") {
                     trigger = false;
                     check = 1;
                 }
 
-                if (x[i] == "NOP") {
+                if (x[i] == "NOP" || x[i] == "nop") {
                     if (show == true)
                         Console.WriteLine("NOP");
                     check = 1;
                 }
 
-                if (x[i] == "MMV") {
+                if (x[i] == "MMV" || x[i] == "mmv") {
                     if (show == true)
                         Console.WriteLine("MMV");
                     UInt16 temp1 = Convert.ToUInt16(x[i + 1]);
@@ -57,7 +67,7 @@ namespace CPU {
                     check = 1;
                 }
 
-                if (x[i] == "MOV") {
+                if (x[i] == "MOV" || x[i] == "mov") {
                     if (show == true)
                         Console.WriteLine("MOV");
                     string temp = x[i + 1];
@@ -71,7 +81,7 @@ namespace CPU {
                     check = 1;
                 }
 
-                if (x[i] == "LDA") {
+                if (x[i] == "LDA" || x[i] == "lda") {
                     if (show == true)
                         Console.WriteLine("LDA");
                     UInt16 temp1 = Convert.ToUInt16(x[i + 1]);
@@ -82,7 +92,7 @@ namespace CPU {
                     check = 1;
                 }
 
-                if (x[i] == "LDB") {
+                if (x[i] == "LDB" || x[i] == "ldb") {
                     if (show == true)
                         Console.WriteLine("LDB");
                     UInt16 temp1 = Convert.ToUInt16(x[i + 1]);
@@ -93,7 +103,7 @@ namespace CPU {
                     check = 1;
                 }
 
-                if (x[i] == "WTA") {
+                if (x[i] == "WTA" || x[i] == "wta") {
                     if (show == true)
                         Console.WriteLine("WTA");
                     UInt16 temp1 = Convert.ToUInt16(x[i + 1]);
@@ -104,7 +114,7 @@ namespace CPU {
                     check = 1;
                 }
 
-                if (x[i] == "WTB") {
+                if (x[i] == "WTB" || x[i] == "wtb") {
                     if (show == true)
                         Console.WriteLine("WTB");
                     UInt16 temp1 = Convert.ToUInt16(x[i + 1]);
@@ -115,7 +125,7 @@ namespace CPU {
                     check = 1;
                 }
 
-                if (x[i] == "ADD") {
+                if (x[i] == "ADD" || x[i] == "add") {
                     if (show == true)
                         Console.WriteLine("ADD");
                     int temp = cpu.A + cpu.B;
@@ -123,7 +133,7 @@ namespace CPU {
                     check = 1;
                 }
 
-                if (x[i] == "SUB") {
+                if (x[i] == "SUB" || x[i] == "sub") {
                     if (show == true)
                         Console.WriteLine("SUB");
                     int temp = cpu.A - cpu.B;
@@ -131,7 +141,7 @@ namespace CPU {
                     check = 1;
                 }
 
-                if (x[i] == "MUL") {
+                if (x[i] == "MUL" || x[i] == "mul") {
                     if (show == true)
                         Console.WriteLine("MUL");
                     int temp = cpu.A * cpu.B;
@@ -139,14 +149,14 @@ namespace CPU {
                     check = 1;
                 }
 
-                if (x[i] == "JMP") {
+                if (x[i] == "JMP" || x[i] == "jmp") {
                     if (show == true)
                         Console.WriteLine("JMP");
                     i = Convert.ToUInt16(x[i + 1]);
                     check = 1;
                 }
 
-                if (x[i] == "CMP") {
+                if (x[i] == "CMP" || x[i] == "cmp") {
                     if (show == true)
                         Console.WriteLine("CMP");
                     if (cpu.A == cpu.B)
@@ -160,7 +170,7 @@ namespace CPU {
                     check = 1;
                 }
 
-                if (x[i] == "JNE") {
+                if (x[i] == "JNE" || x[i] == "jne") {
                     if (show == true)
                         Console.WriteLine("JNE");
                     UInt16 temp = Convert.ToUInt16(x[i + 1]);
@@ -173,7 +183,7 @@ namespace CPU {
                     check = 1;
                 }
 
-                if (x[i] == "JIE") {
+                if (x[i] == "JIE" || x[i] == "jie") {
                     if (show == true)
                         Console.WriteLine("JIE");
                     UInt16 temp = Convert.ToUInt16(x[i + 1]);
@@ -186,7 +196,7 @@ namespace CPU {
                     check = 1;
                 }
 
-                if (x[i] == "HLT") {
+                if (x[i] == "HLT" || x[i] == "hlt") {
                     if (show == true)
                         Console.WriteLine("HLT");
 
@@ -212,7 +222,7 @@ namespace CPU {
                     while (true) ;
                 }
 
-                if (x[i] == "CRB") {
+                if (x[i] == "CRB" || x[i] == "crb") {
                     if (show == true)
                         Console.WriteLine("CRB");
                     UInt16 temp = Convert.ToUInt16(x[i + 1]);
@@ -307,7 +317,8 @@ namespace CPU {
                     Console.ForegroundColor = ConsoleColor.White;
                 }
 
-                Thread.Sleep(1000 / cpu.clock);
+                if (trigger == true)
+                    Thread.Sleep(1000 / cpu.clock);
             }
         }
     }
