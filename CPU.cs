@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace CPU {
@@ -150,7 +151,25 @@ namespace CPU {
                 if (x[i] == "JMP" || x[i] == "jmp") {
                     if (show == true)
                         Console.WriteLine("JMP");
-                    i = Convert.ToUInt16(x[i + 1]);
+
+                    try {
+                        i = Convert.ToUInt16(x[i + 1]);
+                    }
+                    catch {
+                        string temp3 = x[i + 1];
+                        int temp2 = 0;
+
+                        for (int t = 0; t < x.Length; t++) {
+                            if (x[t].Contains(temp3)) {
+                                temp2++;
+
+                                if (temp2 == 2) {
+                                    i = t;
+                                    break;
+                                }
+                            }
+                        }
+                    }
                     check = 1;
                 }
 
@@ -171,26 +190,64 @@ namespace CPU {
                 if (x[i] == "JNE" || x[i] == "jne") {
                     if (show == true)
                         Console.WriteLine("JNE");
-                    UInt16 temp = Convert.ToUInt16(x[i + 1]);
 
-                    if (cpu.A != cpu.B)
-                        i = temp;
+                    UInt16 temp;
+                    try {
+                        temp = Convert.ToUInt16(x[i + 1]);
 
-                    else
-                        i = i + 1;
+                        if (cpu.A != cpu.B)
+                            i = temp;
+
+                        else
+                            i = i + 1;
+                    }
+                    catch (Exception e) {
+                        string temp3 = x[i + 1];
+                        int temp2 = 0;
+
+                        for (int t = 0; t < x.Length; t++) {
+                            if (x[t].Contains(temp3)) {
+                                temp2++;
+
+                                if (temp2 == 2) {
+                                    i = t;
+                                    break;
+                                }
+                            }
+                        }
+                    }
                     check = 1;
                 }
 
                 if (x[i] == "JIE" || x[i] == "jie") {
                     if (show == true)
                         Console.WriteLine("JIE");
-                    UInt16 temp = Convert.ToUInt16(x[i + 1]);
 
-                    if (cpu.A == cpu.B)
-                        i = temp;
+                    UInt16 temp;
+                    try {
+                        temp = Convert.ToUInt16(x[i + 1]);
 
-                    else
-                        i = i + 1;
+                        if (cpu.A == cpu.B)
+                            i = temp;
+
+                        else
+                            i = i + 1;
+                    }
+                    catch (Exception e) {
+                        string temp3 = x[i + 1];
+                        int temp2 = 0;
+
+                        for (int t = 0; t < x.Length; t++) {
+                            if (x[t].Contains(temp3)) {
+                                temp2++;
+
+                                if (temp2 == 2) {
+                                    i = t;
+                                    break;
+                                }
+                            }
+                        }
+                    }
                     check = 1;
                 }
 
