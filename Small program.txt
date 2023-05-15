@@ -5,8 +5,8 @@ global main
 	mov
 	B
 
-	jmp
-	18
+	call func
+	loop
 
 	call println
 
