@@ -12,8 +12,9 @@ global main
 
 	call println
 	Exit code status 0
-	
-	hlt
+
+	jmp
+	exit
 
 global loop
 	crb
@@ -29,7 +30,10 @@ global loop
 
 	;checking if it has written it 4 times yet
 	jne
-	18
+	19
 
 	jmp
 	10
+
+global exit
+	hlt
