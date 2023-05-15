@@ -29,7 +29,7 @@ global loop
 
 	;checking if it has written it 4 times yet
 	jne
-	16
+	18
 
 	jmp
 	10
