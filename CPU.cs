@@ -13,7 +13,7 @@ namespace CPU {
         public static void Main(string[] args) {
             CPU cpu = new CPU();
 
-            bool show;
+            bool show = false;
             Console.Write("Show Register and PC? (y / n): ");
             string nn = Console.ReadLine();
 
@@ -21,8 +21,6 @@ namespace CPU {
 
             if (nn == "y" || nn == "Y")
                 show = true;
-            else
-                show = false;
 
             string[] x = File.ReadAllLines("input.txt");
 
@@ -37,7 +35,7 @@ namespace CPU {
                 if (x[i] != "")
                     res = x[i].Substring(0, 1);
                 else
-                    res = "";
+                    res = ""; 
 
                 if (res == ";" || res == "g") {
                     trigger = false;
@@ -287,6 +285,23 @@ namespace CPU {
                     }
 
                     i = i + 1;
+                    check = 1;
+                }
+
+                if (x[i] == "call func") {
+                    string temp = x[i + 1];
+                    int temp2 = 0;
+
+                    for (int t = 0; t < x.Length; t++) {
+                        if (x[t].Contains(temp)) {
+                            temp2++;
+
+                            if (temp2 == 2) {
+                                i = t;
+                                break;
+                            }
+                        }
+                    }
                     check = 1;
                 }
 
