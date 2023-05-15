@@ -43,6 +43,8 @@ Formatting:
 
     JNE & JIE:
     Address
+    
+    The rest are all single instruction
 ```
 calling:
 ```
