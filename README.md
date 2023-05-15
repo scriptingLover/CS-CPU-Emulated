@@ -1,6 +1,6 @@
 # CS-CPU-emulated
 
-A small CPU made written in C#, You can changing the clock speed via the public int clock number.
+A small CPU made written in C#, you can change the clock speed via the public int clock number.
 
 OPcode:
 ```
