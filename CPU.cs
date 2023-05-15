@@ -37,7 +37,7 @@ namespace CPU {
                 else
                     res = ""; 
 
-                if (res == ";" || res == "g") {
+                if (res == ";" || x[i].Contains("global")) {
                     trigger = false;
                     check = 1;
                 }
