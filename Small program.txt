@@ -1,31 +1,34 @@
-CRB
-10
+global main
+	crb
+	1
 
-MOV
-B
+	mov
+	B
 
-CRB
-30
+	jmp
+	18
 
-ADD
+	call println
 
-WTB
-0
+	call println
+	Exit code status 0
+	
+	hlt
 
-LDA
-0
+global loop
+	crb
+	1
 
-MMV
-0
-10
+	call println
+	Hi
 
-WTA
-1
+	add
 
-WTB
-10
+	crb
+	5
 
-call println
-Program ran successful
+	jne
+	16
 
-HLT
+	jmp
+	10
