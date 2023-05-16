@@ -4,6 +4,8 @@ A small 16 bit CPU written in C#, you can change the clock speed via the public 
 You can use the global keyword for a callable function.
 Comments must be on a seperate line from the code.
 
+The input file will be in the same directory as the program and it will have to be called "input.txt".
+
 OPcode:
 ```
 (N = null, A = A register, B = B register, T = All)
