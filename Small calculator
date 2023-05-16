@@ -11,7 +11,7 @@ global main
 	call iscanf
 	1
 
-	;add
+global add
 	wta
 	0
 	wtb
@@ -25,7 +25,7 @@ global main
 	call printli
 	2
 
-	;min
+global min
 	wta
 	0
 	wtb
@@ -39,7 +39,7 @@ global main
 	call printli
 	2
 
-	;mul
+global mul
 	wta
 	0
 	wtb
