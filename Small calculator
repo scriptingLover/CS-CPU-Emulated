@@ -1,0 +1,54 @@
+global main
+	call print
+	"Enter a whole number: "
+
+	call iscanf
+	0
+
+	call print
+	"Enter a whole number: "
+	
+	call iscanf
+	1
+
+	;add
+	wta
+	0
+	wtb
+	1
+
+	add
+
+	lda
+	2
+
+	call printli
+	2
+
+	;min
+	wta
+	0
+	wtb
+	1
+
+	sub
+
+	lda
+	2
+
+	call printli
+	2
+
+	;mul
+	wta
+	0
+	wtb
+	1
+
+	mul
+
+	lda
+	2
+
+	call printli
+	2
