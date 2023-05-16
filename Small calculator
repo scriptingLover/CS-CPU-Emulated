@@ -11,7 +11,7 @@ global main
 	call iscanf
 	1
 
-global addition
+NULLcall addition
 	wta
 	0
 	wtb
@@ -28,7 +28,7 @@ global addition
 	call printli
 	2
 
-global minus
+NULLcall minus
 	wta
 	0
 	wtb
@@ -45,7 +45,7 @@ global minus
 	call printli
 	2
 
-global multiplication
+NULLcall multiplication
 	wta
 	0
 	wtb
