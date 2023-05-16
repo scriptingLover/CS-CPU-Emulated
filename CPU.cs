@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace CPU {
@@ -323,6 +322,14 @@ namespace CPU {
                     for (int t = 0; t < asciiInts.Length; t++) {
                         cpu.M[t + temp2] = Convert.ToUInt16(asciiInts[t]);
                     }
+
+                    i = i + 1;
+                    check = 1;
+                }
+
+                if (x[i] == "call iscanf") {
+                    UInt16 temp = Convert.ToUInt16(Console.ReadLine());
+                    cpu.M[Convert.ToInt32(x[i + 1])] = temp;
 
                     i = i + 1;
                     check = 1;
