@@ -24,8 +24,10 @@ namespace CPU {
 
             string[] x = File.ReadAllLines("input.txt");
 
-            for (int i = 0; i < x.Length; i++)
+            for (int i = 0; i < x.Length; i++) {
                 x[i] = x[i].Replace("\t", "");
+                x[i] = x[i].Replace("\"", "");
+            }
 
             for (int i = 0; i < x.Length;) {
                 int check = 0;
