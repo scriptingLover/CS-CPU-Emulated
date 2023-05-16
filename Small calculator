@@ -11,7 +11,7 @@ global main
 	call iscanf
 	1
 
-global add
+global addition
 	wta
 	0
 	wtb
@@ -22,10 +22,13 @@ global add
 	lda
 	2
 
+	call print
+	"Added: "
+
 	call printli
 	2
 
-global min
+global minus
 	wta
 	0
 	wtb
@@ -36,10 +39,13 @@ global min
 	lda
 	2
 
+	call print
+	"Subtracted: "
+
 	call printli
 	2
 
-global mul
+global multiplication
 	wta
 	0
 	wtb
@@ -49,6 +55,9 @@ global mul
 
 	lda
 	2
+
+	call print
+	"Multiplied: "
 
 	call printli
 	2
