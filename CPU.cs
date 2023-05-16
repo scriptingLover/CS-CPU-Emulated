@@ -129,8 +129,14 @@ namespace CPU {
                     if (show == true)
                         Console.WriteLine("ADD");
                     int temp = cpu.A + cpu.B;
-                    cpu.A = Convert.ToUInt16(temp);
-                    check = 1;
+                    try {
+                        cpu.A = Convert.ToUInt16(temp);
+                        check = 1;
+                    }
+                    catch (Exception e) {
+                        cpu.A = (UInt16)(temp & 0xffff);
+                        check = 1;
+                    }
                 }
 
                 if (x[i] == "SUB" || x[i] == "sub") {
@@ -152,8 +158,14 @@ namespace CPU {
                     if (show == true)
                         Console.WriteLine("MUL");
                     int temp = cpu.A * cpu.B;
-                    cpu.A = Convert.ToUInt16(temp);
-                    check = 1;
+                    try {
+                        cpu.A = Convert.ToUInt16(temp);
+                        check = 1;
+                    }
+                    catch(Exception e) {
+                        cpu.A = (UInt16)(temp & 0xffff);
+                        check = 1;
+                    }
                 }
 
                 if (x[i] == "JMP" || x[i] == "jmp") {
