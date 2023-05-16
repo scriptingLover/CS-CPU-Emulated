@@ -39,7 +39,7 @@ namespace CPU {
                 else
                     res = "";
 
-                if (res == ";" || x[i].Contains("global")) {
+                if (res == ";" || x[i].Contains("global") || x[i].Contains("NULLcall")) {
                     trigger = false;
                     check = 1;
                 }
@@ -375,7 +375,7 @@ namespace CPU {
                     int temp2 = 0;
 
                     for (int t = 0; t < x.Length; t++) {
-                        if (x[t].Contains(temp)) {
+                        if (x[t].Contains(temp) && !x[t].Contains("NULLcall")) {
                             temp2++;
 
                             if (temp2 == 2) {
