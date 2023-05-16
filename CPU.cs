@@ -136,8 +136,15 @@ namespace CPU {
                 if (x[i] == "SUB" || x[i] == "sub") {
                     if (show == true)
                         Console.WriteLine("SUB");
-                    int temp = cpu.A - cpu.B;
-                    cpu.A = Convert.ToUInt16(temp);
+                    try {
+                        int temp = cpu.A - cpu.B;
+                        cpu.A = Convert.ToUInt16(temp);
+                    }
+                    catch (Exception e) {
+                        int temp2 = 65535 - (cpu.B - cpu.A) + 1;
+                        cpu.A = Convert.ToUInt16(temp2);
+                    }
+
                     check = 1;
                 }
 
@@ -309,6 +316,20 @@ namespace CPU {
                     }
 
                     Console.Write("\n");
+
+                    i = i + 1;
+                    check = 1;
+                }
+
+                if (x[i] == "call printi") {
+                    Console.Write(cpu.M[Convert.ToInt32(x[i + 1])]);
+
+                    i = i + 1;
+                    check = 1;
+                }
+
+                if (x[i] == "call printli") {
+                    Console.WriteLine(cpu.M[Convert.ToInt32(x[i + 1])]);
 
                     i = i + 1;
                     check = 1;
