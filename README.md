@@ -63,8 +63,17 @@ Calling:
 
     printlm:
     Address
+    
+    printi:
+    Address
+    
+    printli:
+    Address
 
     scanf:
+    Address
+    
+    iscanf:
     Address
     
     func:
