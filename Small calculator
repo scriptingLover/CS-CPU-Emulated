@@ -52,3 +52,11 @@ global mul
 
 	call printli
 	2
+
+global end
+	call println
+
+	call println
+	"Program ran successfully"
+
+	hlt
