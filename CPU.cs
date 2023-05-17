@@ -1,5 +1,7 @@
 using System;
 using System.IO;
+using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace CPU {
@@ -363,8 +365,43 @@ namespace CPU {
                 }
 
                 if (x[i] == "call iscanf") {
-                    UInt16 temp = Convert.ToUInt16(Console.ReadLine());
-                    cpu.M[Convert.ToInt32(x[i + 1])] = temp;
+                    try {
+                        UInt16 temp = Convert.ToUInt16(Console.ReadLine());
+                        cpu.M[Convert.ToInt32(x[i + 1])] = temp;
+                    }
+                    catch (Exception e) {
+                        cpu.M[Convert.ToInt32(x[i + 1])] = 0;
+                    }
+
+                    i = i + 1;
+                    check = 1;
+                }
+
+                if (x[i] == "call itoa") {
+                    string temp = Convert.ToString(cpu.M[Convert.ToUInt16(x[i + 1])]);
+
+                    for (int t = 0; t < temp.Length; t++)
+                        cpu.M[t + Convert.ToUInt16(x[i + 1])] = temp[t];
+
+                    i = i + 1;
+                    check = 1;
+                }
+
+                if (x[i] == "call atoi") {
+                    int index = Convert.ToInt32(x[i + 1]);
+                    try {
+                        StringBuilder sb = new StringBuilder();
+                        while (cpu.M[index] != 0) {
+                            sb.Append((char)cpu.M[index]);
+                            index++;
+                        }
+                        int temp = int.Parse(sb.ToString());
+
+                        cpu.M[Convert.ToInt32(x[i + 1])] = Convert.ToUInt16(temp);
+                    }
+                    catch (Exception e) {
+                        cpu.M[Convert.ToUInt16(x[i + 1])] = 0;
+                    }
 
                     i = i + 1;
                     check = 1;
@@ -385,6 +422,24 @@ namespace CPU {
                         }
                     }
                     check = 1;
+                }
+
+                if (x[i] == "call ascii") {
+                    try {
+                        UInt16 temp = Convert.ToUInt16(x[i + 1]);
+                        string temp2 = x[i + 2];
+
+                        for (int t = 0; t < temp2.Length; t++) {
+                            cpu.M[t + Convert.ToUInt16(x[i + 1])] = temp2[t];
+                        }
+                        
+                        check = 1;
+                    }
+                    catch (Exception e) {
+                        check = 0;
+                    }
+
+                    i = i + 2;
                 }
 
                 i = i + 1;
