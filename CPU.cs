@@ -8,7 +8,7 @@ namespace CPU {
         public UInt16 B;
         public UInt16[] M = new UInt16[65536];
 
-        public int clock = 1000;
+        public int clock = 1000000;
 
         public static void Main(string[] args) {
             CPU cpu = new CPU();
@@ -203,23 +203,27 @@ namespace CPU {
 
                         else
                             i = i + 1;
+
+                        check = 1;
                     }
                     catch (Exception e) {
                         string temp3 = x[i + 1];
-                        int temp2 = 0;
 
-                        for (int t = 0; t < x.Length; t++) {
-                            if (x[t].Contains(temp3)) {
-                                temp2++;
-
-                                if (temp2 == 2) {
+                        if (cpu.A != cpu.B) {
+                            for (int t = 0; t < x.Length; t++) {
+                                if (x[t].Contains(temp3) && x[t].Contains("global")) {
                                     i = t;
+                                    check = 1;
                                     break;
                                 }
                             }
                         }
+
+                        else {
+                            i = i + 1;
+                            check = 1;
+                        }
                     }
-                    check = 1;
                 }
 
                 if (x[i] == "JIE" || x[i] == "jie") {
@@ -240,18 +244,21 @@ namespace CPU {
                         string temp3 = x[i + 1];
                         int temp2 = 0;
 
-                        for (int t = 0; t < x.Length; t++) {
-                            if (x[t].Contains(temp3)) {
-                                temp2++;
-
-                                if (temp2 == 2) {
+                        if (cpu.A == cpu.B) {
+                            for (int t = 0; t < x.Length; t++) {
+                                if (x[t].Contains(temp3) && x[t].Contains("global")) {
                                     i = t;
+                                    check = 1;
                                     break;
                                 }
                             }
                         }
+
+                        else {
+                            i = i + 1;
+                            check = 1;
+                        }
                     }
-                    check = 1;
                 }
 
                 if (x[i] == "HLT" || x[i] == "hlt") {
