@@ -80,4 +80,14 @@ Calling:
     
     func:
     Name
+    
+    itoa:
+    Address
+    
+    atoi:
+    Address
+    
+    ascii:
+    Address
+    <string>
 ```
