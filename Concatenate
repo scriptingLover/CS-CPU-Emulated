@@ -1,0 +1,14 @@
+global main
+	call ascii
+	0
+	"Hello "
+
+	call printlm
+	0
+
+	call ascii
+	6
+	"world!"
+
+	call printm
+	0
