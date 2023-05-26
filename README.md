@@ -90,4 +90,19 @@ Calling:
     ascii:
     Address
     <string>
+    
+    esp++:
+    No syntax required
+    
+    esp--:
+    No syntax required
+    
+    espA:
+    No syntax required
+    
+    espB:
+    No syntax required
+    
+    esp==:
+    Address
 ```
