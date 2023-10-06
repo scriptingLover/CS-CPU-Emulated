@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Text;
 
 namespace CPU {
@@ -162,7 +163,7 @@ namespace CPU {
                         cpu.A = Convert.ToUInt16(temp);
                         check = 1;
                     }
-                    catch(Exception e) {
+                    catch (Exception e) {
                         cpu.A = (UInt16)(temp & 0xffff);
                         check = 1;
                     }
@@ -437,7 +438,7 @@ namespace CPU {
                         for (int t = 0; t < temp2.Length; t++) {
                             cpu.M[t + Convert.ToUInt16(x[i + 1])] = temp2[t];
                         }
-                        
+
                         check = 1;
                     }
                     catch (Exception e) {
@@ -445,6 +446,51 @@ namespace CPU {
                     }
 
                     i = i + 2;
+                }
+
+                if (x[i] == "call strcmp") {
+                    UInt16 temp1 = Convert.ToUInt16(x[i + 1]);
+                    UInt16 temp2 = Convert.ToUInt16(x[i + 2]);
+
+                    int index = temp1;
+                    UInt16[] temp3 = new UInt16[65536];
+                    UInt16[] temp4 = new UInt16[65536];
+
+                    while (cpu.M[index] != 0) {
+                        temp3[index] = cpu.M[index];
+                        index++;
+                    }
+
+                    for (int t = 0; t < 5; t++) {
+                        if (temp3[t] == 0)
+                            Console.WriteLine("0");
+
+                        Console.WriteLine(temp3[t]);
+                    }
+
+                    index = temp2;
+                    while (cpu.M[index] != 0) {
+                        temp4[index] = cpu.M[index];
+                        index++;
+                    }
+
+                    for (int t = 0; t < 5; t++) {
+                        if (temp4[t] == 0)
+                            Console.WriteLine("0");
+
+                        Console.WriteLine(temp4[t]);
+                    }
+
+                    bool eq = temp3.SequenceEqual(temp4);
+
+                    if (eq == true)
+                        cpu.A = 0;
+
+                    else
+                        cpu.A = 1;
+
+                    i = i + 2;
+                    check = 1;
                 }
 
                 i = i + 1;
