@@ -15,7 +15,7 @@ namespace CPU {
             CPU cpu = new CPU();
 
             bool show = false;
-            Console.Write("Show Register and PC? (y / n): ");
+            Console.Write("Show Register and PC? (n / n): ");
             string nn = Console.ReadLine();
 
             Console.Clear();
